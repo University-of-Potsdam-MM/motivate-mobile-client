@@ -6,7 +6,7 @@ H1 {
 
 #info-box {
   border: 3px dashed #F00;
-  padding: 0px;
+  padding: 0;
   position: absolute;
   right: 1em;
   top: 0;
@@ -27,22 +27,22 @@ H1 {
 	*/
 .rowarea {
   float: left;
-  border: 0px dashed #F00;
-  padding: 0px;
+  border: 0 dashed #F00;
+  padding: 0;
   position: relative;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   width: 100%;
   overflow: hidden;
 }
 
 .colarea {
   float: left;
-  border: 0px dashed #F00;
-  padding: 0px;
+  border: 0 dashed #F00;
+  padding: 0;
   position: relative;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   text-overflow: clip;
   overflow: hidden;
 }
@@ -235,11 +235,10 @@ H1 {
 
 .my-editor {
   all: initial;
+}
 
 * {
   all: unset;
-}
-
 }
 
 .optionsmenu {
@@ -331,6 +330,4 @@ H1 {
 /* studi-version */
 #navbar-right {
   display: none;
-}
-
 }
