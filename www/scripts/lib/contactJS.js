@@ -792,6 +792,7 @@ define('contextInformation',['data', 'parameterList'], function(Data, ParameterL
         ContextInformation.OPERATOR_EQUALS = "==";
         ContextInformation.OPERATOR_LESS_THAN = "<";
         ContextInformation.OPERATOR_GREATER_THAN = ">";
+        ContextInformation.OPERATOR_CONTAINS = "contains";
 
         /**
          *
@@ -904,7 +905,7 @@ define('contextInformation',['data', 'parameterList'], function(Data, ParameterL
                     return parseInt(value);
                     break;
                 case "BOOLEAN":
-                    return value === "true" || value === "TRUE" || value == "yes" || value == "YES";
+                    return value === "true" || value === "TRUE" || value === "yes" || value === "YES";
                 default:
                     return value;
                     break;
@@ -1312,6 +1313,36 @@ define('contextInformation',['data', 'parameterList'], function(Data, ParameterL
             }
         };
 
+        /**
+         * Checks if the context information fulfils the given operator and value.
+         *
+         * @param operator
+         * @param {*} value
+         * @returns {boolean}
+         * @private
+         */
+        ContextInformation.prototype.fulfils = function(operator, value) {
+            switch(operator) {
+                case ContextInformation.OPERATOR_EQUALS:
+                    return this.getValue() === value;
+                    break;
+                case ContextInformation.OPERATOR_UNEQUALS:
+                    return this.getValue() !== value;
+                    break;
+                case ContextInformation.OPERATOR_LESS_THAN:
+                    return this.getValue() < value;
+                    break;
+                case ContextInformation.OPERATOR_GREATER_THAN:
+                    return this.getValue() > value;
+                    break;
+                case ContextInformation.OPERATOR_CONTAINS:
+                    return this.getValue().indexOf(value) > -1;
+                    break;
+                default:
+                    return false;
+            }
+        };
+
         return ContextInformation;
     })();
 });
@@ -1658,46 +1689,20 @@ define('contextInformationList',['dataList', 'contextInformation'], function(Dat
             return result;
         };
 
-        /**
-         *
-         * @param {ContextInformation} contextInformation
-         * @param operator
-         * @param {*} value
-         * @returns {boolean}
-         */
         ContextInformationList.prototype.fulfils = function(contextInformation, operator, value) {
+            /**
+             * Checks if a context information in the list fulfils type, operator and value of the given information.
+             *
+             * @param {ContextInformation} contextInformation
+             * @param operator
+             * @param {*} value
+             * @returns {boolean}
+             */
             var contextInformationOfKind = this.find(contextInformation);
             for (var index in contextInformationOfKind) {
-                if (contextInformationOfKind.hasOwnProperty(index) && this._fulfils(contextInformationOfKind[index], operator, ContextInformation.restoreDataType(contextInformation.getDataType(), value))) return true;
+                if (contextInformationOfKind.hasOwnProperty(index) && contextInformationOfKind[index].fulfils(operator, ContextInformation.restoreDataType(contextInformation.getDataType(), value))) return true;
             }
             return false;
-        };
-
-        /**
-         *
-         * @param {ContextInformation} contextInformation
-         * @param operator
-         * @param {*} value
-         * @returns {boolean}
-         * @private
-         */
-        ContextInformationList.prototype._fulfils = function(contextInformation, operator, value) {
-            switch(operator) {
-                case ContextInformation.OPERATOR_EQUALS:
-                    return contextInformation.getValue() == value;
-                    break;
-                case ContextInformation.UNEQUALS:
-                    return contextInformation.getValue() != value;
-                    break;
-                case ContextInformation.OPERATOR_LESS_THAN:
-                    return contextInformation.getValue() < value;
-                    break;
-                case ContextInformation.OPERATOR_GREATER_THAN:
-                    return contextInformation.getValue() > value;
-                    break;
-                default:
-                    return false;
-            }
         };
 
         return ContextInformationList;

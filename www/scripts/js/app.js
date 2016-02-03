@@ -283,13 +283,11 @@ angular.module('starter', ['ionic', 'ngAnimate'])
       console.log("Fire Action 1!");
 
       adaptationEngine.addContextInformation({
-        name: "CI_USER_AGE",
-        type: "INTEGER",
+        name: "CI_USER_LOCATION_COUNTRY",
+        type: "STRING",
         parameterList: [],
-        value: 32
+        value: "Deutschland"
       }, false);
-
-      $scope.$apply();
     };
 
     /**

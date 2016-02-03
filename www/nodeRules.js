@@ -3,7 +3,7 @@ var _d = new _contactJS.Discoverer();
 
 var _rules = [
 	{
-		"id": "4492c1cc-88e8-4b35-a91e-3900abe36c61",
+		"id": "25567d57-4e05-4c34-89f6-243c3a62e766",
 		"relatedContextInformation": [
 ],
 		"condition": function(R) {
@@ -17,7 +17,7 @@ var _rules = [
 		}
 	},
 	{
-		"id": "3307d9e9-0a87-4c1b-8b31-21031c0e2bea",
+		"id": "f5a77f7e-e152-419c-b2d7-f34d7d31b71b",
 		"relatedContextInformation": [
 _contactJS.ContextInformation.fromContextInformationDescription(_d, {name: "CI_FINISHED_LEARNING_UNIT", type: "STRING", parameterList: []}),
 ],
@@ -32,7 +32,7 @@ _contactJS.ContextInformation.fromContextInformationDescription(_d, {name: "CI_F
 		}
 	},
 	{
-		"id": "de7fa6dd-0c5a-4774-939b-8ea174270add",
+		"id": "7f899206-501b-40aa-9a04-896473f78282",
 		"relatedContextInformation": [
 _contactJS.ContextInformation.fromContextInformationDescription(_d, {name: "CI_CURRENT_LEARNING_UNIT", type: "STRING", parameterList: []}),
 ],
@@ -47,13 +47,13 @@ _contactJS.ContextInformation.fromContextInformationDescription(_d, {name: "CI_C
 		}
 	},
 	{
-		"id": "bd6d4421-3ce6-4933-8cb0-dea848f9c7b7",
+		"id": "871a6fe5-441c-4fbb-b5bf-89022595e88c",
 		"relatedContextInformation": [
 _contactJS.ContextInformation.fromContextInformationDescription(_d, {name: "CI_FINISHED_LEARNING_UNIT", type: "STRING", parameterList: []}),
-_contactJS.ContextInformation.fromContextInformationDescription(_d, {name: "CI_USER_AGE", type: "INTEGER", parameterList: []}),
+_contactJS.ContextInformation.fromContextInformationDescription(_d, {name: "CI_USER_LOCATION_COUNTRY", type: "STRING", parameterList: []}),
 ],
 		"condition": function(R) {
-			R.when((this.fulfils(_contactJS.ContextInformation.fromContextInformationDescription(_d, {name: "CI_FINISHED_LEARNING_UNIT", type: "STRING", parameterList: []}), "==", "unitbe68ef81-b468-4fb5-a2e8-385d7580326a")) && (this.fulfils(_contactJS.ContextInformation.fromContextInformationDescription(_d, {name: "CI_USER_AGE", type: "INTEGER", parameterList: []}), ">", "22")));
+			R.when((this.fulfils(_contactJS.ContextInformation.fromContextInformationDescription(_d, {name: "CI_FINISHED_LEARNING_UNIT", type: "STRING", parameterList: []}), "==", "unitbe68ef81-b468-4fb5-a2e8-385d7580326a")) && (this.fulfils(_contactJS.ContextInformation.fromContextInformationDescription(_d, {name: "CI_USER_LOCATION_COUNTRY", type: "STRING", parameterList: []}), "contains", "Deutsch")));
 		},
 		"consequence": function(R) {
 			if (typeof window["ruleEngine"]._callbacks["selectLearningUnitCallback"] != "undefined") {
@@ -63,7 +63,7 @@ _contactJS.ContextInformation.fromContextInformationDescription(_d, {name: "CI_U
 		}
 	},
 	{
-		"id": "a8bb1344-1ea5-4f0d-86bc-6a1a351b3ac0",
+		"id": "ce8e2db3-58d8-4783-96f2-da1b04033161",
 		"relatedContextInformation": [
 _contactJS.ContextInformation.fromContextInformationDescription(_d, {name: "CI_CURRENT_LEARNING_UNIT", type: "STRING", parameterList: []}),
 ],
